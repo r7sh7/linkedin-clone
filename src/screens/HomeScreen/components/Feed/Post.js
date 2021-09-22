@@ -1,12 +1,12 @@
 import { Avatar } from '@material-ui/core';
 import React from 'react';
-import InputOption from './InputOption';
+import InputOption from '../../../../components/Input Options/InputOption';
 import ThumbUpOffAltIcon from '@mui/icons-material/ThumbUpOffAlt';
 import InsertCommentIcon from '@mui/icons-material/InsertComment';
 import ShareIcon from '@mui/icons-material/Share';
 import SendIcon from '@mui/icons-material/Send';
 import './Post.css';
-function Post({ url, name, description, message}) {
+function Post({ url, name, description, message }) {
     return (
         <div className="post">
             <div className="post__header">

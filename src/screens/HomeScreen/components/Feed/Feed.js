@@ -6,10 +6,10 @@ import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
 import EventIcon from '@material-ui/icons/Event';
 
 import './Feed.css'
-import InputOption from './InputOption';
+import InputOption from '../../../../components/Input Options/InputOption';
 import Post from './Post';
 import firebase from 'firebase';
-import { db } from "./firebase";
+import { db } from "../../../../config/firebase";
 
 function Feed() {
     const [ posts, setPosts ] = useState([]);

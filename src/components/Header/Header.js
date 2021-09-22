@@ -4,6 +4,7 @@ import SupervisorAccountIcon from '@material-ui/icons/SupervisorAccount';
 import BusinessCenterIcon from '@material-ui/icons/BusinessCenter';
 import ChatIcon from '@material-ui/icons/Chat';
 import NotificationsIcon from '@material-ui/icons/Notifications';
+
 import './Header.css';
 import HeaderOption from './HeaderOption';
 
@@ -15,7 +16,7 @@ const Header = () => {
                 <img alt="logo" src="/images/linkedin.svg" />
                 <div className="header__search">
                     <SearchIcon />
-                    <input type="text"/>
+                    <input placeholder="Search" type="text"/>
                 </div>
             </div>
             <div className="header__right">
