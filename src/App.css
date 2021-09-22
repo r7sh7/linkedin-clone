@@ -6,5 +6,7 @@
 
 .app__body{
     display: flex;
+    margin: 35px 250px;
+    max-width: 100%;
 }
 
