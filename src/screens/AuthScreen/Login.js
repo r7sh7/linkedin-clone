@@ -3,7 +3,6 @@ import { useDispatch } from 'react-redux';
 import { auth } from '../../config/firebase';
 import { LOGIN } from '../../store/authConstants';
 import './Login.css';
-import { register } from '../../store/authActions';
 
 
 function Login() {
@@ -22,7 +21,7 @@ function Login() {
             dispatch({ 
                 type: LOGIN, 
                 payload: {
-                    email: email,
+                    email: userAuth.user.email,
                     name: userAuth.user.displayName,
                     profilePic: userAuth.user.photoURL, 
                     uid: userAuth.user.uid
@@ -31,17 +30,26 @@ function Login() {
     };
 
     const handleRegister = (e) => {
-        e.preventDefault();
         if(!name){
-            return alert('Please enter your full name!')
-        }else{
-            dispatch(register({
-                email: email,
-                password: password,
-                name: name,
-                profilePic: profilePic
-            }))  
+            return alert('Please enter your full name!');
         }
+        auth.createUserWithEmailAndPassword(email, password)
+            .then(userAuth => {
+                userAuth.user.updateProfile({
+                    displayName: name,
+                    photoURL: profilePic
+                }).then(() => {
+                    dispatch({ 
+                        type: LOGIN, 
+                        payload: {
+                            email: userAuth.user.email,
+                            name: userAuth.user.displayName,
+                            profilePic: userAuth.user.photoURL, 
+                            uid: userAuth.user.uid
+                         }
+                    });
+                });
+            }).catch(error => alert(error));
     };
 
     return (

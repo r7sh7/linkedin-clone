@@ -12,6 +12,7 @@ import { LOGOUT } from '../../store/authConstants';
 import { auth } from '../../config/firebase';
 
 
+
 const Header = () => {
     const dispatch = useDispatch();
 
@@ -34,7 +35,7 @@ const Header = () => {
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/>
                 <HeaderOption Icon={ChatIcon} title="Messaging"/>
                 <HeaderOption Icon={NotificationsIcon} title="Notifications"/>
-                <HeaderOption avatar="/images/profile_pic.jpeg" title="Me" logout={logOutOfApp}/>
+                <HeaderOption avatar={true} title="Me" logout={logOutOfApp}/>
             </div>
         </div>
     );

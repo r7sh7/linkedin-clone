@@ -2,7 +2,7 @@ import { LOGIN, LOGOUT } from "./authConstants"
 
 const initState = {
     user: null
-}
+};
 
 export const authReducer = (state= initState, action) => {
     switch(action.type){
@@ -16,4 +16,4 @@ export const authReducer = (state= initState, action) => {
             }
         default: return state;
     }
-}
+};

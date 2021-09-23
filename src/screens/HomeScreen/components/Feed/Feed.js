@@ -40,7 +40,7 @@ function Feed() {
             name: user.name,
             description: user.email,
             message: input,
-            photoUrl: user.photoUrl || '',
+            photoUrl: user.profilePic,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         });
         setInput("");
