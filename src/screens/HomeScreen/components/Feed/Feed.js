@@ -5,6 +5,7 @@ import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
 import EventIcon from '@material-ui/icons/Event';
+import FlipMove from 'react-flip-move';
 
 import './Feed.css'
 import InputOption from '../../../../components/Input Options/InputOption';
@@ -64,6 +65,7 @@ function Feed() {
                 </div>
             </div>
             <hr></hr>
+            <FlipMove>
             {
                 posts.map(({id, data:{name, description, message, photoUrl}}) => (
                     <Post 
@@ -75,6 +77,7 @@ function Feed() {
                     />
                 ))
             }
+            </FlipMove>
         </div>
     )
 }
