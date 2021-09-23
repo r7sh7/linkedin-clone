@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { register } from '../../store/authActions';
+import { auth } from '../../config/firebase';
+import { LOGIN } from '../../store/authConstants';
 import './Login.css';
+import { register } from '../../store/authActions';
 
 
 function Login() {
@@ -13,11 +15,23 @@ function Login() {
 
     const dispatch = useDispatch();
 
-    const handleLogin = () => {
-        
+    const handleLogin = (e) => {
+        e.preventDefault();
+        auth.signInWithEmailAndPassword(email, password)
+        .then(userAuth => {
+            dispatch({ 
+                type: LOGIN, 
+                payload: {
+                    email: email,
+                    name: userAuth.user.displayName,
+                    profilePic: userAuth.user.photoURL, 
+                    uid: userAuth.user.uid
+                 }})
+        });
     };
 
-    const handleRegister = () => {
+    const handleRegister = (e) => {
+        e.preventDefault();
         if(!name){
             return alert('Please enter your full name!')
         }else{
@@ -38,7 +52,7 @@ function Login() {
                 <input placeholder="Profile pic URL (optional)" type="url" value={profilePic} onChange={(e) => setProfilePic(e.target.value)}/>
                 <input placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
                 <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                <button type="submit">Sign In</button>
+                <button type="submit" onClick={handleLogin}>Sign In</button>
             </form>
             <p>
                 Not a member?{" "}
