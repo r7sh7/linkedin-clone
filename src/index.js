@@ -6,8 +6,9 @@ import { applyMiddleware, createStore } from 'redux';
 import { Provider } from 'react-redux';
 import { authReducer } from './store/authReducer';
 import thunk from 'redux-thunk';
+import {composeWithDevTools} from 'redux-devtools-extension'
 
-const store = createStore(authReducer, applyMiddleware(thunk));
+const store = createStore(authReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
   <React.StrictMode>
