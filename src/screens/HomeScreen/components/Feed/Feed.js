@@ -1,19 +1,23 @@
 import React, { useEffect, useState } from 'react'
+import { useSelector } from 'react-redux';
 import CreateIcon from '@material-ui/icons/Create';
 import InsertPhotoIcon from '@material-ui/icons/InsertPhoto';
 import YouTubeIcon from '@material-ui/icons/YouTube';
 import CalendarViewDayIcon from '@material-ui/icons/CalendarViewDay';
 import EventIcon from '@material-ui/icons/Event';
+import FlipMove from 'react-flip-move';
 
 import './Feed.css'
-import InputOption from './InputOption';
+import InputOption from '../../../../components/Input Options/InputOption';
 import Post from './Post';
 import firebase from 'firebase';
-import { db } from "./firebase";
+import { db } from "../../../../config/firebase";
 
 function Feed() {
     const [ posts, setPosts ] = useState([]);
     const [ input, setInput ] = useState("");
+
+    const user = useSelector(state => state.user);
 
     useEffect(() => {
         db.collection("posts")
@@ -34,10 +38,10 @@ function Feed() {
         e.preventDefault();
 
         db.collection("posts").add({
-            name: 'Megan Fox',
-            description: 'Actor',
+            name: user.name,
+            description: user.email,
             message: input,
-            photoUrl: 'https://e3.365dm.com/20/06/2048x1152/skynews-megan-fox-actress_5019888.jpg',
+            photoUrl: user.profilePic,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         });
         setInput("");
@@ -61,6 +65,7 @@ function Feed() {
                 </div>
             </div>
             <hr></hr>
+            <FlipMove>
             {
                 posts.map(({id, data:{name, description, message, photoUrl}}) => (
                     <Post 
@@ -72,6 +77,7 @@ function Feed() {
                     />
                 ))
             }
+            </FlipMove>
         </div>
     )
 }
