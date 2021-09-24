@@ -1,4 +1,4 @@
-import { Avatar } from '@material-ui/core';
+import { Avatar } from '@mui/material';
 import React from 'react';
 import { useSelector } from 'react-redux';
 import './SideBar.css';
@@ -18,7 +18,7 @@ function SideBar() {
         <div className="sidebar">
             <div className="sidebar__top">
                 <img alt="" src="/images/sidebar_background_img.jpg"/>
-                <Avatar className="sidebar__avatar" src={user.profilePic}>{user.name[0]}</Avatar>
+                <Avatar className="sidebar__avatar" src={user.profilePic} sx={{height: 60, width: 60}}>{user.name[0]}</Avatar>
                 <h2>{user.name}</h2>
                 <h4>{user.email}</h4>
             </div>

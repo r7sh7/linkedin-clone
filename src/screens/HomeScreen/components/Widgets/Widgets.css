@@ -1,19 +1,17 @@
 .widgets{
     position: sticky;
     top: 80px;
-    flex: 0.2;
-    text-align: center;
+    flex: 0.25;
     height: fit-content;
-}
-
-.widgets__top{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     border: 1px solid lightgray;
-    border-bottom: 0;
-    border-top-left-radius:10px;
-    border-top-right-radius:10px;
+    border-radius: 10px;
     background-color: white;
     padding-bottom: 10px;
+}
+
+.widgets__header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px;
 }
