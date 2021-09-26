@@ -2,12 +2,18 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-right: 28px;
+    margin-right: 0px;
     color: grey;
     cursor: pointer;
+    padding: 0 15px;
 }
 
 .headerOption:hover{
+    color: black;
+}
+
+.active{
+    border-bottom: 2.5px solid black;
     color: black;
 }
 
@@ -21,3 +27,21 @@
     font-size: 12px;
     font-weight: 400;
 }
+
+.avatar__title{
+    display: flex;
+    color: grey;
+    align-items: center;
+    margin-top: -4px;
+    
+}
+.avatar__title:hover{
+    color: black;
+}
+
+.avatar__title > h3{
+    font-weight: 400;
+    font-size: 12px;
+    text-align: center;
+}
+

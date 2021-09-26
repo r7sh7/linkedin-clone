@@ -3,8 +3,8 @@
     top: 0;
     display: flex;
     justify-content: space-evenly;
-    padding-bottom: 5px;
-    padding-top: 10px;
+    align-items: center;
+    padding-top: 4px;
     border-bottom: 0.1px solid lightgray;
     width: 100%;
     z-index: 999;
@@ -25,8 +25,8 @@
     display: flex;
     padding: 8px;
     align-items: center;
-    height: 22px;
-    width: 250px;
+    height: 36px;
+    width: 270px;
     color: grey;
     background-color: #eef3f8;
     border-radius: 5px;
@@ -40,4 +40,29 @@
 
 .header__right{
     display:flex;
+}
+
+.avatar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-right: 28px;
+    color: grey;
+    cursor: pointer;
+}
+.avatar:hover{
+    color: black;
+}
+
+@media only screen and (max-width: 768px) {
+    .header__right{
+        position: fixed;
+        left: 0;
+        bottom: 0;
+        background-color:white;
+        width: 100%;
+        justify-content: space-evenly;
+        padding-top: 2px;
+        padding-left: 5px;
+    }
 }

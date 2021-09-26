@@ -1,6 +1,11 @@
 
 .home__body{
     display: flex;
-    margin: 35px 200px;
-    max-width: 1200px;
+}
+
+@media only screen and (max-width: 768px){
+    .home__body{
+        display: flex;
+        flex-direction: column;
+    }
 }
