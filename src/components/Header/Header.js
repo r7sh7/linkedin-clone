@@ -10,16 +10,21 @@ import HeaderOption from './HeaderOption';
 import { useDispatch } from 'react-redux';
 import { LOGOUT } from '../../store/authConstants';
 import { auth } from '../../config/firebase';
+import { Redirect } from 'react-router';
+import { useSelector } from 'react-redux';
 
 
 
 const Header = () => {
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
 
     const logOutOfApp = () => {
         dispatch({ type: LOGOUT });
         auth.signOut();
     }
+
+    if(!user) return <Redirect to='/' />
     return (  
         <div className="header">
             <div className="header__left">
@@ -30,7 +35,7 @@ const Header = () => {
                 </div>
             </div>
             <div className="header__right">
-                <HeaderOption Icon={HomeIcon} title="Home"/>
+                <HeaderOption Icon={HomeIcon} title="Home" active={true}/>
                 <HeaderOption Icon={SupervisorAccountIcon} title="My Network"/>
                 <HeaderOption Icon={BusinessCenterIcon} title="Jobs"/>
                 <HeaderOption Icon={ChatIcon} title="Messaging"/>

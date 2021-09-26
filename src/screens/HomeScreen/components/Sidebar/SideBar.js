@@ -17,9 +17,13 @@ function SideBar() {
     return (
         <div className="sidebar">
             <div className="sidebar__top">
-                <img alt="" src="/images/sidebar_background_img.jpg"/>
-                <Avatar className="sidebar__avatar" src={user.profilePic} sx={{height: 60, width: 60}}>{user.name[0]}</Avatar>
-                <h2>{user.name}</h2>
+                <img alt="" src="/images/card-bg.svg"/>
+                { 
+                    (user) && (user.photoURL!=null) ?
+                    (<Avatar className="sidebar__avatar" src={user.photoURL} sx={{height: 60, width: 60}} />) :
+                    (<Avatar className="sidebar__avatar" sx={{height: 60, width: 60}}>{user.displayName[0]}</Avatar>)
+                }
+                <h2>{user.displayName}</h2>
                 <h4>{user.email}</h4>
             </div>
 

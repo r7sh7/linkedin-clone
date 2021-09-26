@@ -11,11 +11,9 @@ import {composeWithDevTools} from 'redux-devtools-extension'
 const store = createStore(authReducer, composeWithDevTools(applyMiddleware(thunk)));
 
 ReactDOM.render(
-  <React.StrictMode>
     <Provider store={store}>
       <App />
-    </Provider>
-  </React.StrictMode>,
+    </Provider>,
   document.getElementById('root')
 );
 

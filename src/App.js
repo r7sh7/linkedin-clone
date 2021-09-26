@@ -1,34 +1,36 @@
 import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 import './App.css';
-import Header from './components/Header/Header';
-import { auth } from './config/firebase';
 import Login from './screens/AuthScreen/Login';
+import Header from './components/Header/Header';
 import HomeScreen from './screens/HomeScreen/HomeScreen';
-import { login, logout } from './store/authActions';
+import { getUserAuth } from './store/authActions';
+import LoginRegister from './screens/AuthScreen/Login_Register';
 
 function App() {
 
-  const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
   useEffect(() => {
-    auth.onAuthStateChanged(userAuth => {
-      if (userAuth){
-        dispatch(login(userAuth))
-      }else{
-        dispatch(logout())
-      }
-    })
+    dispatch(getUserAuth());
   }, [dispatch]);
   
 
   return (
-    <div className="app">
-        <Header />
-        {!user ? <Login /> : <HomeScreen />}
-    </div>
+    <Router>
+      <div className="app">
+         <Switch>
+           <Route exact path="/" component={Login}/>
+           <Route exact path="/register" component={LoginRegister}/>
+           <Route path="/home"> 
+              <Header />
+              <HomeScreen />
+           </Route>
+         </Switch>
+        </div>
+      </Router>
   );
 }
 

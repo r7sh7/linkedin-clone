@@ -38,10 +38,10 @@ function Feed() {
         e.preventDefault();
 
         db.collection("posts").add({
-            name: user.name,
+            name: user.displayName,
             description: user.email,
             message: input,
-            photoUrl: user.profilePic,
+            photoUrl: user.photoURL,
             timestamp: firebase.firestore.FieldValue.serverTimestamp(),
         });
         setInput("");
