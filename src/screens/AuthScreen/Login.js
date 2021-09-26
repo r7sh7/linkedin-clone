@@ -1,73 +1,51 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { auth } from '../../config/firebase';
-import { LOGIN } from '../../store/authConstants';
-import './Login.css';
+import React from 'react'
+import { useDispatch, useSelector } from 'react-redux'
+import { Redirect } from 'react-router';
+import { signInAPI } from '../../store/authActions';
+import './Login.css'
 
 
-function Login() {
 
-    const [ name, setName ] = useState("");
-    const [ profilePic, setProfilePic ] = useState("");
-    const [ email, setEmail ] = useState("");
-    const [ password, setPassword ] = useState("");
-
+function Login(props) {
+    
     const dispatch = useDispatch();
+    const user = useSelector(state => state.user);
 
-    const handleLogin = (e) => {
-        e.preventDefault();
-        auth.signInWithEmailAndPassword(email, password)
-        .then(userAuth => {
-            dispatch({ 
-                type: LOGIN, 
-                payload: {
-                    email: userAuth.user.email,
-                    name: userAuth.user.displayName,
-                    profilePic: userAuth.user.photoURL, 
-                    uid: userAuth.user.uid
-                 }})
-        });
+    const handleJoinClick = () => {
+        props.history.push('/register')
     };
 
-    const handleRegister = (e) => {
-        if(!name){
-            return alert('Please enter your full name!');
-        }
-        auth.createUserWithEmailAndPassword(email, password)
-            .then(userAuth => {
-                userAuth.user.updateProfile({
-                    displayName: name,
-                    photoURL: profilePic
-                }).then(() => {
-                    dispatch({ 
-                        type: LOGIN, 
-                        payload: {
-                            email: userAuth.user.email,
-                            name: userAuth.user.displayName,
-                            profilePic: userAuth.user.photoURL, 
-                            uid: userAuth.user.uid
-                         }
-                    });
-                });
-            }).catch(error => alert(error));
-    };
+    const handleSignInClick = () => {
+        props.history.push('/signIn')
+    }
+
+    if(user) return <Redirect to='/home' />
 
     return (
         <div className="login">
-            <img src="/images/linkedin_name_icon.svg" alt="LinkedIn Logo" />
-            <form onSubmit={handleLogin}>
-                <input placeholder="Full name (required if registering)" type="text" value={name} onChange={(e) => setName(e.target.value)}/>
-                <input placeholder="Profile pic URL (optional)" type="url" value={profilePic} onChange={(e) => setProfilePic(e.target.value)}/>
-                <input placeholder="Email" type="email" value={email} onChange={(e) => setEmail(e.target.value)} />
-                <input placeholder="Password" type="password" value={password} onChange={(e) => setPassword(e.target.value)}/>
-                <button type="submit" onClick={handleLogin}>Sign In</button>
-            </form>
-            <p>
-                Not a member?{" "}
-                <span className="login__register" onClick={handleRegister}>Register Now</span>
-            </p>
+            <div className="login__nav">
+                <a href="/">
+                    <img src="/images/login-logo.svg" alt="login-logo" />
+                </a>
+                <div className="login__navRight">
+                    <a href="/register" className="nav__tertiaryButton" onClick={handleJoinClick}>Join Now</a>
+                    <a href="/login" className="nav__secondaryButton" onClick={handleSignInClick}>Sign In</a>
+                </div>
+            </div>
+            <div className="login__section">
+                <div className="login__hero">
+                    <h1>Welcome to your professional community</h1>
+                    <img src="/images/login-hero.svg" alt="login-hero" />
+                </div>
+                <div className="login__button">
+                    <button onClick={() => dispatch(signInAPI())}>
+                        <img src="/images/google.svg" alt="google-logo" />
+                        Sign in with Google
+                    </button>
+                </div>
+            </div>
         </div>
     )
 }
 
-export default Login 
+export default Login
