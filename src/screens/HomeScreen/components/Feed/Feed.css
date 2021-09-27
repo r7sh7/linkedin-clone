@@ -1,46 +1,46 @@
-.feed{
-    flex: 0.6;
-    margin: 0 25px;
+.feed {
+  flex: 0.5;
+  margin: 0 25px;
 }
 
-.feed__inputContainer{
-    background-color: white;
-    padding: 10px;
-    padding-bottom: 5px;
-    border-radius: 10px;
-    margin-bottom: 15px;
+.feed__inputContainer {
+  background-color: white;
+  padding: 10px;
+  padding-bottom: 5px;
+  border-radius: 10px;
+  margin-bottom: 15px;
 }
 
-.feed__input{
-    display: flex;
-    border: 1px solid lightgray;
-    border-radius: 30px;
-    padding: 10px;
-    padding-left: 15px;
-    color: gray;
+.feed__input {
+  display: flex;
+  border: 1px solid lightgray;
+  border-radius: 30px;
+  padding: 10px;
+  padding-left: 15px;
+  color: gray;
 }
 
-.feed__input > form{
-    display: flex;
-    width: 100%;
+.feed__input > form {
+  display: flex;
+  width: 100%;
 }
 
 .feed__input > form > input {
-    flex: 1;
-    border: none;
-    outline: none;
-    margin-left: 10px;
-    font-size: larger;
-    font-weight: 500;
+  flex: 1;
+  border: none;
+  outline: none;
+  margin-left: 10px;
+  font-size: larger;
+  font-weight: 500;
 }
 
-.feed__input > form > button{
-    display: none;
+.feed__input > form > button {
+  display: none;
 }
 
-.feed__inputOptions{
-    display: flex;
-    justify-content: space-evenly;
-    margin-top: 5px;
-    color: gray;
+.feed__inputOptions {
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 5px;
+  color: gray;
 }

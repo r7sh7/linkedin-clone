@@ -1,11 +1,14 @@
-
-.home__body{
-    display: flex;
+.home__body {
+  display: flex;
+  max-width: 1128px;
+  width: 100%;
+  margin: 35px auto;
 }
 
-@media only screen and (max-width: 768px){
-    .home__body{
-        display: flex;
-        flex-direction: column;
-    }
+@media only screen and (max-width: 768px) {
+  .home__body {
+    display: flex;
+    flex-direction: column;
+    margin-top: 0px;
+  }
 }
