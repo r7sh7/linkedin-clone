@@ -1,54 +1,36 @@
-import React, { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import React, { useEffect } from "react";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+import { useDispatch } from "react-redux";
 
-import './App.css';
-import Header from './components/Header/Header';
-import { auth } from './config/firebase';
-import Login from './screens/AuthScreen/Login';
-import HomeScreen from './screens/HomeScreen/HomeScreen';
-import { login, logout } from './store/authActions';
-import { LOGIN, LOGOUT } from './store/authConstants';
+import "./App.css";
+import Login from "./screens/MainScreen/MainScreen";
+import Header from "./components/Header/Header";
+import HomeScreen from "./screens/HomeScreen/HomeScreen";
+import { getUserAuth } from "./store/authActions";
+import LoginRegister from "./screens/AuthScreen/Register";
+import SignIn from "./screens/AuthScreen/SignIn";
 
 function App() {
-
-  const user = useSelector(state => state.user);
   const dispatch = useDispatch();
 
-
-  // useEffect(() => {
-  //   auth.onAuthStateChanged(userAuth => {
-  //     if(userAuth){
-  //       console.log(userAuth);
-  //       dispatch({ 
-  //         type: LOGIN, 
-  //         payload: {
-  //           email: userAuth.email,
-  //           uid: userAuth.uid,
-  //           name: userAuth.displayName,
-  //           profilePic: userAuth.photoURL
-  //       }});
-  //     }else{
-  //       dispatch({ type: LOGOUT});
-  //     }
-  //   })
-  // }, []);
-
   useEffect(() => {
-    auth.onAuthStateChanged(userAuth => {
-      if (userAuth){
-        dispatch(login(userAuth))
-      }else{
-        dispatch(logout())
-      }
-    })
+    dispatch(getUserAuth());
   }, [dispatch]);
-  
 
   return (
-    <div className="app">
-        <Header />
-        {!user ? <Login /> : <HomeScreen />}
-    </div>
+    <Router>
+      <div className="app">
+        <Switch>
+          <Route exact path="/" component={Login} />
+          <Route exact path="/register" component={LoginRegister} />
+          <Route exact path="/signin" component={SignIn} />
+          <Route path="/home">
+            <Header />
+            <HomeScreen />
+          </Route>
+        </Switch>
+      </div>
+    </Router>
   );
 }
 

@@ -1,0 +1,86 @@
+.login {
+  display: grid;
+  place-items: center;
+  margin: auto;
+}
+
+.login > img {
+  object-fit: contain;
+  height: 70px;
+  margin: 40px;
+  cursor: pointer;
+}
+
+.login > form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login > form > input {
+  height: 50px;
+  width: 350px;
+  margin-bottom: 10px;
+  padding-left: 10px;
+  border-radius: 5px;
+  font-size: 20px;
+}
+
+.login > form > button {
+  height: 50px;
+  width: 350px;
+  padding: 10px;
+  margin-bottom: 20px;
+  border-radius: 5px;
+  font-size: large;
+  color: #fff;
+  background-color: #0a66c2;
+  cursor: pointer;
+}
+
+.login__register {
+  color: #0a66c2;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.login > h2 {
+  margin-top: 20px;
+  width: 350px;
+  border-bottom: 1px solid grey;
+  text-align: center;
+  line-height: 5px;
+}
+
+.login > h2 span {
+  color: grey;
+  background-color: #fff;
+  padding: 0 10px;
+}
+
+.login__google {
+  margin-top: 30px;
+  margin-bottom: 10px;
+}
+
+.login__google > button {
+  margin: 10px auto;
+  width: 350px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 56px;
+  border-radius: 5px;
+  font-size: large;
+  background-color: #fff;
+  color: #0a66c2;
+  border: 1px solid #0a66c2;
+}
+.login__google > button:hover {
+  cursor: pointer;
+  background-color: rgba(112, 181, 249, 0.15);
+  border: 2px solid #0a66c2;
+}
+
+.login__google > button > img {
+  margin-right: 15px;
+}
