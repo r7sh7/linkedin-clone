@@ -21,7 +21,7 @@ function Widget() {
     <div className="widgets">
       <div className="widgets__header">
         <p>LinkedIn News</p>
-        <InfoIcon fontSize="small" style={{ fill: "grey" }} />
+        <InfoIcon />
       </div>
       {newsArticle("The 25 startups to watch", "Top news - 36,283 readers")}
       {newsArticle("What not to say in an email", "Top news - 36,283 readers")}
