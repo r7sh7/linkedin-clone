@@ -5,37 +5,35 @@
 
 .feed__inputContainer {
   background-color: white;
-  padding: 10px;
-  padding-bottom: 5px;
+  padding: 5px 10px;
   border-radius: 10px;
   margin-bottom: 15px;
+  border: 1px solid rgba(0, 0, 0, 0.15);
 }
 
-.feed__input {
+.feed__inputHeader {
   display: flex;
-  border: 1px solid lightgray;
-  border-radius: 30px;
-  padding: 10px;
-  padding-left: 15px;
-  color: gray;
-}
-
-.feed__input > form {
-  display: flex;
-  width: 100%;
-}
-
-.feed__input > form > input {
-  flex: 1;
-  border: none;
-  outline: none;
+  align-items: center;
   margin-left: 10px;
-  font-size: larger;
-  font-weight: 500;
 }
 
-.feed__input > form > button {
-  display: none;
+.feed__inputHeader > button {
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.5);
+  margin: 5px 10px;
+  outline: none;
+  line-height: 1.5;
+  font-size: 14px;
+  min-height: 48px;
+  border-radius: 40px;
+  border: 1px solid rgba(0, 0, 0, 0.3);
+  flex-grow: 1;
+  padding-left: 16px;
+  text-align: left;
+}
+.feed__inputHeader > button:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
 }
 
 .feed__inputOptions {

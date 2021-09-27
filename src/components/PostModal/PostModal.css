@@ -1,0 +1,118 @@
+.postmodal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 99999;
+  background-color: rgba(0, 0, 0, 0.6);
+}
+
+.postmodal__card {
+  width: 100%;
+  max-width: 552px;
+  max-height: 90%;
+  background-color: white;
+  border-radius: 5px;
+  position: relative;
+  top: 30px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.postmodal__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 20px;
+  border-bottom: 1px solid lightgrey;
+}
+
+.postmodal__header > h2 {
+  font-size: 20px;
+  font-weight: 400;
+}
+.postmodal__header > button {
+  border: none;
+  cursor: pointer;
+}
+.postmodal__header > button .MuiSvgIcon-root {
+  font-size: 26px;
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.postmodal__body {
+  padding: 15px 20px;
+}
+
+.postmodal__userInfo {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.postmodal__userInfo > h2 {
+  margin-left: 10px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.postmodal__body > textarea {
+  width: 100%;
+  min-height: 100px;
+  text-decoration: none;
+  padding: 10px 5px;
+  font-size: 16px;
+  outline: none;
+  border: none;
+  background: none;
+  resize: none;
+}
+
+.postmodal__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 15px 20px;
+}
+
+.postmodal__sharebuttons {
+  display: flex;
+}
+
+.postmodal__sharebuttons .MuiSvgIcon-root {
+  color: rgba(0, 0, 0, 0.6);
+  font-size: 48px;
+  padding: 10px;
+  margin-right: 5px;
+}
+
+.postmodal__sharebuttons .MuiSvgIcon-root:hover {
+  cursor: pointer;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.postmodal__footer > button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border-radius: 20px;
+  font-size: 16px;
+  background-color: #0a66c2;
+  border: none;
+  color: white;
+  font-weight: 600;
+}
+
+.postmodal__footer > button:hover {
+  cursor: pointer;
+  background-color: #004182;
+}
+
+.postmodal__footer > button:disabled {
+  color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.1);
+  cursor: not-allowed;
+}

@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
 import CreateIcon from "@material-ui/icons/Create";
 import InsertPhotoIcon from "@material-ui/icons/InsertPhoto";
 import YouTubeIcon from "@material-ui/icons/YouTube";
@@ -10,14 +9,20 @@ import FlipMove from "react-flip-move";
 import "./Feed.css";
 import InputOption from "../../../../components/Input Options/InputOption";
 import Post from "./Post";
-import firebase from "firebase";
 import { db } from "../../../../config/firebase";
+import PostModal from "../../../../components/PostModal/PostModal";
+import { Avatar } from "@material-ui/core";
+import { useSelector } from "react-redux";
 
 function Feed() {
   const [posts, setPosts] = useState([]);
-  const [input, setInput] = useState("");
-
+  const [showModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.user);
+
+  const handleClick = (e) => {
+    e.preventDefault();
+    setShowModal(!showModal);
+  };
 
   useEffect(() => {
     db.collection("posts")
@@ -32,34 +37,13 @@ function Feed() {
       );
   }, []);
 
-  const sendPost = (e) => {
-    e.preventDefault();
-
-    db.collection("posts").add({
-      name: user.displayName,
-      description: user.email,
-      message: input,
-      photoUrl: user.photoURL,
-      timestamp: firebase.firestore.FieldValue.serverTimestamp(),
-    });
-    setInput("");
-  };
-
   return (
     <div className="feed">
+      <PostModal showModal={showModal} closeModal={handleClick} />
       <div className="feed__inputContainer">
-        <div className="feed__input">
-          <CreateIcon />
-          <form>
-            <input
-              value={input}
-              onChange={(e) => setInput(e.target.value)}
-              type="text"
-            />
-            <button type="submit" onClick={sendPost}>
-              submit
-            </button>
-          </form>
+        <div className="feed__inputHeader">
+          <Avatar src={user.photoURL}>{user.displayName[0]}</Avatar>
+          <button onClick={handleClick}>Start a post</button>
         </div>
         <div className="feed__inputOptions">
           <InputOption Icon={InsertPhotoIcon} color="#70B5F9" title="Photo" />
