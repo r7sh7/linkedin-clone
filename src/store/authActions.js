@@ -34,7 +34,7 @@ export function signInAPI() {
 
 export function getUserAuth() {
   return (dispatch) => {
-    auth.onAuthStateChanged(async (userAuth) => {
+    auth.onAuthStateChanged((userAuth) => {
       console.log(userAuth);
       if (userAuth) {
         dispatch(login(userAuth));
