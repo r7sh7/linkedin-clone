@@ -1,0 +1,20 @@
+.wip {
+  height: 100vh;
+  display: grid;
+  place-items: center;
+}
+
+.wip__container {
+  width: 550px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.wip__container > img {
+  width: 100%;
+  margin-bottom: 10px;
+}
+.wip__container > h1 {
+  text-align: center;
+}
