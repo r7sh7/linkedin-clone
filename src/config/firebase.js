@@ -15,4 +15,8 @@ const auth = firebase.auth();
 const provider = new firebase.auth.GoogleAuthProvider();
 const storage = firebase.storage();
 
+provider.setCustomParameters({
+  prompt: "select_account",
+});
+
 export { db, auth, provider, storage };

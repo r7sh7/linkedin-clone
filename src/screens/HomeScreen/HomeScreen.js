@@ -9,11 +9,12 @@ import "./HomeScreen.css";
 function HomeScreen() {
   const user = useSelector((state) => state.user);
   if (!user) return <Redirect to="/" />;
-  console.log(user);
   return (
     <div className="home__body">
-      <SideBar />
-      <Feed />
+      <div className="home__bodyContainer">
+        <SideBar />
+        <Feed />
+      </div>
       <Widget />
     </div>
   );

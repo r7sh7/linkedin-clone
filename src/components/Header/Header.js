@@ -10,8 +10,9 @@ import HeaderOption from "./HeaderOption";
 import { useDispatch } from "react-redux";
 import { LOGOUT } from "../../store/authConstants";
 import { auth } from "../../config/firebase";
-import { Redirect } from "react-router";
+import { Redirect, useHistory } from "react-router";
 import { useSelector } from "react-redux";
+import { useState } from "react";
 
 const Header = () => {
   const dispatch = useDispatch();
@@ -20,6 +21,18 @@ const Header = () => {
   const logOutOfApp = () => {
     dispatch({ type: LOGOUT });
     auth.signOut();
+  };
+
+  const [active, setActive] = useState("Home");
+  const history = useHistory();
+
+  const handleHeaderOptionClick = (title) => {
+    setActive(title);
+    if (title !== "Home") {
+      history.push("/wip");
+    } else {
+      history.push("/");
+    }
   };
 
   if (!user) return <Redirect to="/" />;
@@ -33,11 +46,36 @@ const Header = () => {
         </div>
       </div>
       <div className="header__right">
-        <HeaderOption Icon={HomeIcon} title="Home" active={true} />
-        <HeaderOption Icon={SupervisorAccountIcon} title="My Network" />
-        <HeaderOption Icon={BusinessCenterIcon} title="Jobs" />
-        <HeaderOption Icon={ChatIcon} title="Messaging" />
-        <HeaderOption Icon={NotificationsIcon} title="Notifications" />
+        <HeaderOption
+          Icon={HomeIcon}
+          title="Home"
+          active={active}
+          handleHeaderOptionClick={handleHeaderOptionClick}
+        />
+        <HeaderOption
+          Icon={SupervisorAccountIcon}
+          title="My Network"
+          active={active}
+          handleHeaderOptionClick={handleHeaderOptionClick}
+        />
+        <HeaderOption
+          Icon={BusinessCenterIcon}
+          title="Jobs"
+          active={active}
+          handleHeaderOptionClick={handleHeaderOptionClick}
+        />
+        <HeaderOption
+          Icon={ChatIcon}
+          title="Messaging"
+          active={active}
+          handleHeaderOptionClick={handleHeaderOptionClick}
+        />
+        <HeaderOption
+          Icon={NotificationsIcon}
+          title="Notifications"
+          active={active}
+          handleHeaderOptionClick={handleHeaderOptionClick}
+        />
         <HeaderOption avatar={true} title="Me" logout={logOutOfApp} />
       </div>
     </div>

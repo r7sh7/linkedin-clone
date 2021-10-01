@@ -1,7 +1,8 @@
 .sidebar {
   position: sticky;
   top: 80px;
-  flex: 0.22;
+  flex: 0.3;
+  margin-left: 1rem;
   text-align: center;
   height: fit-content;
 }
@@ -139,13 +140,12 @@
   font-weight: bolder;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 775px) {
   .sidebar {
     width: 100%;
     position: relative;
-    margin-top: -60px;
-  }
-  .sidebar__bottom {
-    margin-bottom: 100px;
+    margin: 0 25px;
+    margin-bottom: 20px;
+    top: 0px;
   }
 }
