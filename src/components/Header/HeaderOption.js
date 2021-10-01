@@ -3,11 +3,22 @@ import { useSelector } from "react-redux";
 import "./HeaderOption.css";
 import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
 
-const HeaderOption = ({ Icon, avatar, title, logout, active }) => {
+const HeaderOption = ({
+  Icon,
+  avatar,
+  title,
+  logout,
+  handleHeaderOptionClick,
+  active,
+}) => {
   const user = useSelector((state) => state.user);
-  const headerOptionClass = active ? "headerOption active" : "headerOption";
   return (
-    <div className={headerOptionClass} onClick={logout}>
+    <div
+      onClick={
+        handleHeaderOptionClick ? () => handleHeaderOptionClick(title) : logout
+      }
+      className={active === title ? "headerOption active" : "headerOption"}
+    >
       {Icon && <Icon className="headerOption__icon" />}
       {avatar && (
         <Avatar
