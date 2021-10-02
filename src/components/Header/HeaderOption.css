@@ -6,6 +6,7 @@
   color: grey;
   cursor: pointer;
   padding: 0 15px;
+  position: relative;
 }
 
 .headerOption:hover {
@@ -42,4 +43,24 @@
   font-weight: 400;
   font-size: 12px;
   text-align: center;
+}
+
+.signout__card {
+  position: absolute;
+  z-index: 99999;
+  top: 48px;
+  margin-right: 40px;
+  width: 100px;
+  background-color: white;
+  border: 1px solid lightgrey;
+  border-radius: 5px;
+  padding: 5px;
+  text-align: center;
+  font-size: 14px;
+}
+
+.signout__card:hover {
+  color: #0a66c2;
+  cursor: pointer;
+  text-decoration: underline;
 }

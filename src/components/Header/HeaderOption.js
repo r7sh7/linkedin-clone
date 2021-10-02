@@ -9,13 +9,17 @@ const HeaderOption = ({
   title,
   logout,
   handleHeaderOptionClick,
+  popup,
+  handleTogglePopup,
   active,
 }) => {
   const user = useSelector((state) => state.user);
   return (
     <div
       onClick={
-        handleHeaderOptionClick ? () => handleHeaderOptionClick(title) : logout
+        handleHeaderOptionClick
+          ? () => handleHeaderOptionClick(title)
+          : () => handleTogglePopup()
       }
       className={active === title ? "headerOption active" : "headerOption"}
     >
@@ -34,6 +38,12 @@ const HeaderOption = ({
         <div className="avatar__title">
           <h3>{title}</h3>
           <ArrowDropDownIcon fontSize="medium" />
+        </div>
+      )}
+
+      {avatar && popup && (
+        <div className="signout__card" onClick={logout}>
+          <p>Sign Out</p>
         </div>
       )}
     </div>

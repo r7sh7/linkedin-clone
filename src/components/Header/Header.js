@@ -24,7 +24,14 @@ const Header = () => {
   };
 
   const [active, setActive] = useState("Home");
+  const [popup, setPopup] = useState(false);
   const history = useHistory();
+
+  const handleTogglePopup = () => {
+    console.log(popup);
+    setPopup(!popup);
+    console.log(popup);
+  };
 
   const handleHeaderOptionClick = (title) => {
     setActive(title);
@@ -76,7 +83,13 @@ const Header = () => {
           active={active}
           handleHeaderOptionClick={handleHeaderOptionClick}
         />
-        <HeaderOption avatar={true} title="Me" logout={logOutOfApp} />
+        <HeaderOption
+          avatar={true}
+          title="Me"
+          handleTogglePopup={handleTogglePopup}
+          popup={popup}
+          logout={logOutOfApp}
+        />
       </div>
     </div>
   );
