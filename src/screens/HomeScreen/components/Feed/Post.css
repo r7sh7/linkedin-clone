@@ -34,6 +34,11 @@
   font-size: 15px;
   margin-bottom: 20px;
   margin-left: 10px;
+  margin: auto 10px;
+}
+
+.post__body > p {
+  margin-bottom: 10px;
 }
 
 .post__buttons {
