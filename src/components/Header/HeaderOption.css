@@ -54,7 +54,7 @@
   background-color: white;
   border: 1px solid lightgrey;
   border-radius: 5px;
-  padding: 5px;
+  padding: 15px;
   text-align: center;
   font-size: 14px;
 }
@@ -63,4 +63,11 @@
   color: #0a66c2;
   cursor: pointer;
   text-decoration: underline;
+}
+
+@media (max-width: 768px) {
+  .signout__card {
+    top: -48px;
+    margin-right: 0px;
+  }
 }
