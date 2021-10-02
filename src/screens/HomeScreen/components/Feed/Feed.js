@@ -26,16 +26,17 @@ function Feed() {
   useEffect(() => {
     db.collection("posts")
       .orderBy("timestamp", "desc")
-      .onSnapshot((snapshot) =>
+      .onSnapshot((snapshot) => {
         setPosts(
           snapshot.docs.map((doc) => ({
             id: doc.id,
             data: doc.data(),
           }))
-        )
-      );
+        );
+      });
   }, []);
 
+  console.log(posts);
   return (
     <div className="feed">
       <PostModal showModal={showModal} closeModal={handleClick} />
@@ -57,15 +58,25 @@ function Feed() {
       </div>
       <hr></hr>
       <FlipMove>
-        {posts.map(({ id, data: { name, description, message, photoUrl } }) => (
-          <Post
-            key={id}
-            name={name}
-            description={description}
-            message={message}
-            url={photoUrl}
-          />
-        ))}
+        {posts !== [] ? (
+          posts.map(
+            ({
+              id,
+              data: { user, description, sharedImage, video, timestamp },
+            }) => (
+              <Post
+                key={id}
+                description={description}
+                user={user}
+                sharedImage={sharedImage}
+                video={video}
+                date={timestamp?.toDate().toDateString()}
+              />
+            )
+          )
+        ) : (
+          <div>No posts available</div>
+        )}
       </FlipMove>
     </div>
   );
