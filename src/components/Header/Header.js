@@ -28,9 +28,7 @@ const Header = () => {
   const history = useHistory();
 
   const handleTogglePopup = () => {
-    console.log(popup);
     setPopup(!popup);
-    console.log(popup);
   };
 
   const handleHeaderOptionClick = (title) => {

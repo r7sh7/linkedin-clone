@@ -52,6 +52,7 @@ function LoginRegister(props) {
           type="text"
           value={name}
           onChange={(e) => setName(e.target.value)}
+          required
         />
         <input
           placeholder="Profile pic URL (optional)"
@@ -64,12 +65,14 @@ function LoginRegister(props) {
           type="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
+          required
         />
         <input
           placeholder="Password"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
+          required
         />
         <button type="submit" onClick={handleRegister}>
           Join
