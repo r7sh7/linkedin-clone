@@ -14,7 +14,7 @@ import { Avatar } from "@material-ui/core";
 import { useSelector } from "react-redux";
 
 function Feed() {
-  const [posts, setPosts] = useState([]);
+  const [posts, setPosts] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const user = useSelector((state) => state.user);
 
@@ -58,7 +58,7 @@ function Feed() {
       </div>
       <hr></hr>
       <FlipMove>
-        {posts !== [] ? (
+        {posts ? (
           posts.map(
             ({
               id,
