@@ -6,7 +6,8 @@ This is a linkedin ui clone application that I built to practice my ReactJS skil
 2) Login
 3) Dashboard with Dynamic Posts
 4) Create Post (Description, Image/Video url Upload)
-5) Sign Out
+5) Mobile Responsive until 492px
+6) Sign Out
 
 ## Tech Stack
 1) ReactJS with Material UI for the Frontend
